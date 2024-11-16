@@ -15,21 +15,21 @@ class Catalogo:
         for imovel in self.imoveis:
             if imovel.endereco == endereco and imovel.status == "disponivel":
                 imovel.status = "alugado"
-                print(f"{endereco} has been rented.")
+                print(f"{endereco} foi alugado.")
                 return
-        print(f"{endereco} is not available for rent.")
+        print(f"{endereco} nao esta disponivel para alugar.")
 
     def comprar(self, endereco):
         for imovel in self.imoveis:
             if imovel.endereco == endereco and imovel.status == "disponivel":
                 imovel.status = "vendido"
-                print(f"{endereco} has been sold.")
+                print(f"{endereco} foi vendido.")
                 return
-        print(f"{endereco} is not available for sale.")
+        print(f"{endereco} nao esta disponivel a venda.")
 
     def vender(self, imovel):
         self.adicionar_imovel(imovel)
-        print(f"{imovel.endereco} is now listed for sale.")
+        print(f"{imovel.endereco} esta na lista para a venda.")
 
     def exibir_imoveis(self):
         for imovel in self.imoveis:

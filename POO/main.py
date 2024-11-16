@@ -5,36 +5,36 @@ from cliente import Cliente
 from corretor import Corretor
 
 def main():
-    # Create a catalog
+    # Cria o catalogo
     catalogo = Catalogo()
 
-    # Add some properties to the catalog
-    imovel1 = Imovel("123 Main St", "Apartment", 80, 150000, "disponivel", True, 3, True, False, "Nice apartment.")
-    imovel2 = Imovel("456 Side St", "House", 120, 250000, "disponivel", True, 5, True, True, "Spacious house.")
+    # Coloca algumas propriedades ao catalogo
+    imovel1 = Imovel("123 Rua Principal", "Apartamento", 80, 150000, "disponivel", True, 3, True, False, "Bom apartamento.")
+    imovel2 = Imovel("456 Rua Lateral", "Casa", 120, 250000, "disponivel", True, 5, True, True, "Casa espacosa.")
 
     catalogo.adicionar_imovel(imovel1)
     catalogo.adicionar_imovel(imovel2)
 
-    # Display available properties
+    # Mostra as propriedades disponiveis
     print("Available properties:")
     catalogo.exibir_imoveis()
 
-    # Perform some operations
-    catalogo.alugar("123 Main St")
-    catalogo.comprar("456 Side St")
+    # Realiza algumas operacoes
+    catalogo.alugar("123 Rua Principal")
+    catalogo.comprar("456 Rua Lateral")
 
-    # Show updated list
-    print("\nUpdated properties:")
+    # Mostrar lista atualizada
+    print("\nAtualizar propridades: ")
     catalogo.exibir_imoveis()
 
-    # Create a client and a realtor
+    # Criando cliente e corretor
     cliente = Cliente("John Doe", "john@example.com", "password123")
     corretor = Corretor("Alice Realtor", "alice@example.com", "realtorpass", "CRECI12345")
 
-    # Client contacts support
+    # Supporte ao Cliente
     cliente.entrar_em_contato()
 
-    # Realtor information
+    # Informacao do Corretor
     print(corretor)
 
 if __name__ == "__main__":
