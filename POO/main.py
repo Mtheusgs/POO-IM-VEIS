@@ -19,18 +19,16 @@ def register_user(user_type):
 
 
 def login_user(users):
-    """
-    Handles the login of a user by checking the email and password.
-    """
     print("\n=== Login ===")
     email = input("Enter your email: ")
     senha = input("Enter your password: ")
 
     for user in users:
         if user.email == email:
-            if user.login():
+            if user.login(email, senha) == True:
                 return user
-    print("No user found with this email or invalid credentials.")
+            else:
+                print("No user found with this email or invalid credentials.")
     return None
 
 

@@ -6,7 +6,6 @@ class Corretor(Usuario):
         self.creci_num = creci_num
 
     def register(self):
-        print("=== Realtor Register ===")
         super().register()
         self.creci_num = input("Enter your CRECI number: ")
-        print(f"Realtor {self.nome} registered successfully with CRECI: {self.creci_num}.")
+        print(f"Realtor {self.nome} registered successfully with email: {self.email} and CRECI: {self.creci_num}.")

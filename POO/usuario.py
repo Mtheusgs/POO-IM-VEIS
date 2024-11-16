@@ -23,12 +23,9 @@ class Usuario(UsuarioInterface):
         self.nome = input("Enter your name: ")
         self.email = input("Enter your email: ")
         self.senha = input("Create a password: ")
-        print(f"User {self.nome} registered successfully with email: {self.email}.")
+        
 
-    def login(self):
-        print("\n=== Login ===")
-        email = input("Enter your email: ")
-        senha = input("Enter your password: ")
+    def login(self, email:str, senha:str):
         if self.email == email and self.senha == senha:
             print(f"Welcome back, {self.nome}!")
             return True
