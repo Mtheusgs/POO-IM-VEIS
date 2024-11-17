@@ -1,7 +1,9 @@
 from catalogo import Catalogo
-from imovel import Imovel
 from cliente import Cliente
 from corretor import Corretor
+from user_persistence import UserPersistence
+
+CSV_FILE = "data.csv"
 
 def register_user(user_type):
     if user_type == "Cliente":
@@ -28,8 +30,9 @@ def login_user(users):
 
 
 def main():
+    users, properties = UserPersistence.load_from_csv(CSV_FILE)
     catalogo = Catalogo()
-    users = []
+    catalogo.imoveis = properties 
 
     while True:
         print("\n=== Sistema de Imoveis ===")
@@ -54,12 +57,14 @@ def main():
             user = login_user(users)
             if user:
                 print(f"\nBem vindo, {user.nome}! Voce esta logado como {type(user).__name__}.")
-                if type(user).__name__ == "Corretor":
+                if isinstance(user, Corretor):
                     user.corretor_interface(catalogo)
-                elif type(user).__name__ == "Cliente":
+                elif isinstance(user, Cliente):
                     user.cliente_interface(catalogo, users)
+
         elif choice == "3":
-            print("Saindo do sistema. Tchau!")
+            print("Salvando dados e saindo do sistema. Tchau!")
+            UserPersistence.save_to_csv(users, catalogo.imoveis, CSV_FILE)
             break
 
         else:
