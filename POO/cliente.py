@@ -7,7 +7,7 @@ class Cliente(Usuario):
     def entrar_em_contato(self):
         print(f"O e-mail para contato do usuário é {self.email}")
 
-    def cliente_interface(cliente, catalogo):
+    def cliente_interface(self, catalogo):
         while True:
             print("\n=== Cliente Menu ===")
             print("1. Ver Imóveis Disponíveis")

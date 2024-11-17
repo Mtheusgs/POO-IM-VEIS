@@ -11,7 +11,7 @@ class Corretor(Usuario):
         self.creci_num = input("Enter your CRECI number: ")
         print(f"Realtor {self.nome} registered successfully with email: {self.email} and CRECI: {self.creci_num}.")
 
-    def corretor_interface(corretor, catalogo):
+    def corretor_interface(self, catalogo):
         while True:
             print("\n=== Corretor Interface ===")
             print("1. Cadastrar Propriedade")
@@ -30,12 +30,11 @@ class Corretor(Usuario):
                 status = input("Status (Disponível/Não disponível): ").lower() == "disponível"
                 garagem = input("Garagem (Sim/Não): ").lower() == "sim"
                 comodos = int(input("Número de Cômodos: "))
-                acessibilidade = input("Acessibilidade (Sim/Não): ").lower() == "sim"
                 mobiliado = input("Mobiliado (Sim/Não): ").lower() == "sim"
                 descricao = input("Descrição: ")
 
                 endereco = Endereco(rua, numero, cep)
-                novo_imovel = Imovel(endereco, tamanho, valor, status, garagem, comodos, acessibilidade, mobiliado, descricao)
+                novo_imovel = Imovel(endereco, tamanho, valor, status, garagem, comodos, mobiliado, descricao)
                 catalogo.adicionar_imovel(novo_imovel)
                 print("Propriedade cadastrada com sucesso!")
 

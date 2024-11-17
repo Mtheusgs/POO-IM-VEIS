@@ -3,7 +3,6 @@ from imovel import Imovel
 from cliente import Cliente
 from corretor import Corretor
 
-
 def register_user(user_type):
     if user_type == "Cliente":
         cliente = Cliente()
@@ -30,21 +29,13 @@ def login_user(users):
 
 def main():
     catalogo = Catalogo()
-
-    imovel1 = Imovel("123 Rua Principal", "Apartamento", 80, 150000, "disponivel", True, 3, True, False, "Bom apartamento.")
-    imovel2 = Imovel("456 Rua Lateral", "Casa", 120, 250000, "disponivel", True, 5, True, True, "Casa espacosa.")
-
-    catalogo.adicionar_imovel(imovel1)
-    catalogo.adicionar_imovel(imovel2)
-
     users = []
 
     while True:
         print("\n=== Sistema de Imoveis ===")
         print("1. Registrar")
         print("2. Login")
-        print("3. Ver Imoveis Disponiveis")
-        print("4. Sair")
+        print("3. Sair")
         choice = input("Escolha uma opcao: ")
 
         if choice == "1":
@@ -63,18 +54,16 @@ def main():
             user = login_user(users)
             if user:
                 print(f"\nBem vindo, {user.nome}! Voce esta logado como {type(user).__name__}.")
-
+                if type(user).__name__ == "Corretor":
+                    user.corretor_interface(catalogo)
+                elif type(user).__name__ == "Cliente":
+                    user.cliente_interface(catalogo)
         elif choice == "3":
-            print("\nImoveis disponiveis:")
-            catalogo.exibir_imoveis()
-
-        elif choice == "4":
             print("Saindo do sistema. Tchau!")
             break
 
         else:
             print("Opcao Invalida. Por favor, tente novamente.")
-
 
 if __name__ == "__main__":
     main()
