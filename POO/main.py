@@ -57,7 +57,7 @@ def main():
                 if type(user).__name__ == "Corretor":
                     user.corretor_interface(catalogo)
                 elif type(user).__name__ == "Cliente":
-                    user.cliente_interface(catalogo)
+                    user.cliente_interface(catalogo, users)
         elif choice == "3":
             print("Saindo do sistema. Tchau!")
             break
