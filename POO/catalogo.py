@@ -8,8 +8,8 @@ class Catalogo:
     def adicionar_imovel(self, imovel):
         self.imoveis.append(imovel)
 
-    def retirar_imovel(self, endereco):
-        self.imoveis = [imo for imo in self.imoveis if imo.endereco != endereco]
+    def retirar_imovel(self, rua,numero):
+        self.imoveis = [imo for imo in self.imoveis if imo.endereco.rua != rua and imo.endereco.numero != numero]
 
     def alugar(self, endereco):
         for imovel in self.imoveis:

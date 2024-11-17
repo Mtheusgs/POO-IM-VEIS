@@ -27,7 +27,7 @@ class Corretor(Usuario):
                 cep = input("Endereço (CEP): ")
                 tamanho = int(input("Tamanho (m²): "))
                 valor = float(input("Valor: "))
-                status = input("Status (Disponível/Não disponível): ").lower() == "disponível"
+                status = input("Status (Disponível/Não disponível): ").lower() == "disponivel"
                 garagem = input("Garagem (Sim/Não): ").lower() == "sim"
                 comodos = int(input("Número de Cômodos: "))
                 mobiliado = input("Mobiliado (Sim/Não): ").lower() == "sim"
@@ -41,7 +41,8 @@ class Corretor(Usuario):
             elif choice == "2":
                 print("\n=== Remover Propriedade ===")
                 rua = input("Endereço (Rua) da propriedade a ser removida: ")
-                catalogo.retirar_imovel(rua)
+                numero = input("Numeor da propriedade a ser removida: ")
+                catalogo.retirar_imovel(rua,numero)
                 print("Propriedade removida, se existente.")
 
             elif choice == "3":
