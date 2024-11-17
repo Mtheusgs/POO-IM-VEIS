@@ -5,20 +5,14 @@ class Endereco():
         self.numero = numero
         self.cep = cep
 
-class Categoria():
-    def __init__(self, tipo:str):
-        self.tipo = tipo#TODO: mudar para enum
-
 class Imovel:
-    def __init__(self, endereco:Endereco,categoria:Categoria,tamanho:int,valor:float,status:bool,garagem:bool,num_comodos:int,acessibilidade:bool,mobiliado:bool,descricao = None):
+    def __init__(self, endereco:Endereco,tamanho:int,valor:float,status:bool,garagem:bool,num_comodos:int,mobiliado:bool,descricao = None):
         self.endereco=endereco
-        self.categoria=categoria
         self.tamanho=tamanho
         self.valor=valor
         self.status=status
         self.garagem=garagem
         self.comodos=num_comodos
-        self.acessibilidade=acessibilidade
         self.mobiliado=mobiliado
         self.descricao=descricao
 

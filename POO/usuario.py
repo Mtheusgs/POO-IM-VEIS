@@ -3,12 +3,10 @@ from abc import ABC, abstractmethod
 class UsuarioInterface(ABC):
     @abstractmethod
     def register(self):
-        """Abstract method for registering a user."""
         pass
 
     @abstractmethod
     def login(self):
-        """Abstract method for logging in a user."""
         pass
 
 
@@ -19,16 +17,16 @@ class Usuario(UsuarioInterface):
         self.senha = senha
 
     def register(self):
-        print("=== Register ===")
-        self.nome = input("Enter your name: ")
-        self.email = input("Enter your email: ")
-        self.senha = input("Create a password: ")
+        print("=== Registro ===")
+        self.nome = input("Insira seu nome: ")
+        self.email = input("Insira seu e-mail: ")
+        self.senha = input("Crie uma senha: ")
         
 
     def login(self, email:str, senha:str):
         if self.email == email and self.senha == senha:
-            print(f"Welcome back, {self.nome}!")
+            print(f"Bem Vindo de Volta, {self.nome}!")
             return True
         else:
-            print("Invalid email or password.")
+            print("Email ou senha invalido(a).")
             return False
