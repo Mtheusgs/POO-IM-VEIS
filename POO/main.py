@@ -27,8 +27,7 @@ def login_user(users):
         if user.email == email:
             if user.login(email, senha) == True:
                 return user
-            else:
-                print("No user found with this email or invalid credentials.")
+    print("No user found with this email or invalid credentials.")
     return None
 
 
@@ -48,35 +47,36 @@ def main():
 
     while True:
         print("\n=== Real Estate System ===")
-        print("1. Register as Client")
-        print("2. Register as Realtor")
-        print("3. Login")
-        print("4. View Available Properties")
-        print("5. Exit")
+        print("1. Register")
+        print("2. Login")
+        print("3. View Available Properties")
+        print("4. Exit")
         choice = input("Choose an option: ")
 
         if choice == "1":
-            # Register as Client
-            user = register_user("Cliente")
-            users.append(user)
+            print("1. Register as Client")
+            print("2. Register as Realtor")
+            choice_type_user = input("Choose an option: ")
+
+            if choice_type_user == "1":
+                user = register_user("Cliente")
+                users.append(user)
+            if choice_type_user == "2":
+                user = register_user("Corretor")
+                users.append(user)
 
         elif choice == "2":
-            # Register as Realtor
-            user = register_user("Corretor")
-            users.append(user)
-
-        elif choice == "3":
             # Login
             user = login_user(users)
             if user:
                 print(f"\nWelcome, {user.nome}! You are logged in as {type(user).__name__}.")
 
-        elif choice == "4":
+        elif choice == "3":
             # View Available Properties
             print("\nAvailable properties:")
             catalogo.exibir_imoveis()
 
-        elif choice == "5":
+        elif choice == "4":
             print("Exiting the system. Goodbye!")
             break
 
