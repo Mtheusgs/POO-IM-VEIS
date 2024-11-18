@@ -6,12 +6,13 @@ from imovel import Imovel, Endereco
 class UserPersistence:
     @staticmethod
     def save_to_csv(users, properties, file_path):
+        """Saves users and properties to a CSV file."""
         with open(file_path, mode='w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file)
             writer.writerow(["type", "nome", "email", "senha", "creci_num", 
                              "rua", "numero", "cep", "tamanho", "valor", 
                              "status", "garagem", "comodos", "mobiliado", "descricao"])
-            
+
             for user in users:
                 if isinstance(user, Cliente):
                     writer.writerow(["Cliente", user.nome, user.email, user.senha, "", 
@@ -19,11 +20,15 @@ class UserPersistence:
                 elif isinstance(user, Corretor):
                     writer.writerow(["Corretor", user.nome, user.email, user.senha, user.creci_num, 
                                      "", "", "", "", "", "", "", "", "", ""])
+
             for prop in properties:
                 writer.writerow(["Imovel", "", "", "", "", 
                                  prop.endereco.rua, prop.endereco.numero, prop.endereco.cep, 
-                                 prop.tamanho, prop.valor, prop.status, prop.garagem, 
-                                 prop.comodos, prop.mobiliado, prop.descricao])
+                                 prop.tamanho, prop.valor, prop.status, 
+                                 "True" if prop.garagem else "False", 
+                                 prop.comodos, 
+                                 "True" if prop.mobiliado else "False", 
+                                 prop.descricao])
 
     @staticmethod
     def load_from_csv(file_path):
@@ -42,8 +47,11 @@ class UserPersistence:
                     elif row["type"] == "Imovel":
                         endereco = Endereco(row["rua"], int(row["numero"]), row["cep"])
                         prop = Imovel(endereco, int(row["tamanho"]), float(row["valor"]), 
-                                      row["status"] == "True", row["garagem"] == "True", 
-                                      int(row["comodos"]), row["mobiliado"] == "True", row["descricao"])
+                                      row["status"], 
+                                      row["garagem"] == "True", 
+                                      int(row["comodos"]), 
+                                      row["mobiliado"] == "True", 
+                                      row["descricao"])
                         properties.append(prop)
         except FileNotFoundError:
             print(f"Não existe nenhuma informação em {file_path}. Começando do zero.")

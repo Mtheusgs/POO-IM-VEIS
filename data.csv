@@ -1,10 +1,15 @@
 type,nome,email,senha,creci_num,rua,numero,cep,tamanho,valor,status,garagem,comodos,mobiliado,descricao
 Cliente,John Doe,john.doe@example.com,password123,,,,,,,,,,,
-Corretor,Alice Realtor,alice.realtor@example.com,realtorpass,CRECI12345,,,,,,,,,,
-Cliente,Sarah Johnson,sarah.johnson@example.com,sarah2023,,,,,,,,,,,
-Corretor,Bob Agent,bob.agent@example.com,agentpass,CRECI67890,,,,,,,,,,
-Imovel,,,,,Main Street,101,12345-678,85,150000,True,True,3,True,"Spacious and modern apartment."
-Imovel,,,,,Broadway Avenue,202,23456-789,120,250000,True,True,5,False,"Beautiful single-family home."
-Imovel,,,,,Elm Street,303,34567-890,70,120000,False,False,2,True,"Cozy studio apartment, currently rented."
-Imovel,,,,,Maple Drive,404,45678-901,150,320000,True,True,6,False,"Large house with a big backyard."
-Imovel,,,,,Oak Lane,505,56789-012,95,180000,True,True,4,True,"Affordable townhouse in a quiet neighborhood."
+Cliente,Sarah Connor,sarah.connor@example.com,securePass123,,,,,,,,,,,
+Corretor,Alice Realtor,alice.realtor@example.com,realtorpass,CRECI12345,,,,,,,,,,,
+Corretor,Bob Agent,bob.agent@example.com,agentpass,CRECI67890,,,,,,,,,,,
+Imovel,,,,,Main Street,101,12345-678,85,150000,disponivel_aluguel,True,3,True,"Spacious and modern apartment."
+Imovel,,,,,Broadway Avenue,202,23456-789,120,250000,disponivel_venda,True,5,False,"Beautiful single-family home."
+Imovel,,,,,Elm Street,303,34567-890,70,120000,alugado,False,2,True,"Cozy studio apartment, currently rented."
+Imovel,,,,,Maple Drive,404,45678-901,150,320000,vendido,True,6,False,"Large house with a big backyard."
+Imovel,,,,,Oak Lane,505,56789-012,95,180000,disponivel_venda,True,4,True,"Affordable townhouse in a quiet neighborhood."
+Imovel,,,,,Pine Avenue,606,67890-123,60,80000,disponivel_aluguel,False,2,False,"Small but comfortable apartment."
+Imovel,,,,,Willow Road,707,78901-234,200,450000,vendido,True,8,True,"Luxury villa with swimming pool."
+Imovel,,,,,Cedar Street,808,89012-345,110,220000,disponivel_aluguel,True,4,True,"Well-located apartment near downtown."
+Imovel,,,,,Birch Lane,909,90123-456,130,275000,disponivel_venda,False,5,True,"Modern house with a spacious garage."
+Imovel,,,,,Spruce Way,1010,12345-678,90,140000,alugado,True,3,False,"Quiet apartment, currently rented."

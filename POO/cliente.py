@@ -11,8 +11,12 @@ class Cliente(Usuario):
         while True:
             print("\n=== Cliente Menu ===")
             print("1. Ver Imóveis Disponíveis")
-            print("2. Suporte")
-            print("3. Sair")
+            print("2. Imóveis Disponíveis para Alugar")
+            print("3. Imóveis Disponíveis para Comprar")
+            print("4. Alugar Imóvel")
+            print("5. Comprar Imóvel")
+            print("6. Suporte")
+            print("7. Sair")
             choice = input("Escolha uma opção: ")
 
             if choice == "1":
@@ -20,13 +24,45 @@ class Cliente(Usuario):
                 catalogo.exibir_imoveis()
 
             elif choice == "2":
-                print("Corretores: \n")
-                for user in users:
-                    if type(user).__name__ == "Corretor":
-                        print(f"Nome: {user.nome}, E-mail: {user.email}, CRECI: {user.creci_num}.\n")
+                print("\n=== Imóveis Disponíveis para Alugar ===")
+                for imovel in catalogo.imoveis:
+                    if imovel.status == "disponivel_aluguel":
+                        print(imovel)
 
             elif choice == "3":
-                print("Saindo da interface Cliente.")
+                print("\n=== Imóveis Disponíveis para Comprar ===")
+                for imovel in catalogo.imoveis:
+                    if imovel.status == "disponivel_venda":
+                        print(imovel)
+
+            elif choice == "4":
+                endereco_rua = input("Digite o endereço (Rua) do imóvel que deseja alugar: ")
+                numero = int(input("Digite o número do imóvel: "))
+                for imovel in catalogo.imoveis:
+                    if imovel.endereco.rua == endereco_rua and imovel.endereco.numero == numero:
+                        catalogo.alugar(imovel.endereco)
+                        break
+                else:
+                    print("Imóvel não encontrado.")
+
+            elif choice == "5":
+                endereco_rua = input("Digite o endereço (Rua) do imóvel que deseja comprar: ")
+                numero = int(input("Digite o número do imóvel: "))
+                for imovel in catalogo.imoveis:
+                    if imovel.endereco.rua == endereco_rua and imovel.endereco.numero == numero:
+                        catalogo.comprar(imovel.endereco)
+                        break
+                else:
+                    print("Imóvel não encontrado.")
+
+            elif choice == "6":
+                print("Corretores: \n")
+                for user in users:
+                    if isinstance(user, Usuario) and type(user).__name__ == "Corretor":
+                        print(f"Nome: {user.nome}, E-mail: {user.email}, CRECI: {user.creci_num}.\n")
+
+            elif choice == "7":
+                print("Saindo...")
                 break
 
             else:

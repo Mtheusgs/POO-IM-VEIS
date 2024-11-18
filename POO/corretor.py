@@ -8,8 +8,8 @@ class Corretor(Usuario):
 
     def register(self):
         super().register()
-        self.creci_num = input("Enter your CRECI number: ")
-        print(f"Realtor {self.nome} registered successfully with email: {self.email} and CRECI: {self.creci_num}.")
+        self.creci_num = input("Insira seu numero CRECI: ")
+        print(f"Corretor {self.nome} registrado com sucesso com o email: {self.email} e CRECI: {self.creci_num}.")
 
     def corretor_interface(self, catalogo):
         while True:
@@ -27,7 +27,20 @@ class Corretor(Usuario):
                 cep = input("Endereço (CEP): ")
                 tamanho = int(input("Tamanho (m²): "))
                 valor = float(input("Valor: "))
-                status = input("Status (Disponível/Não disponível): ").lower() == "disponivel"
+                
+                print("Status (Digite uma opção):")
+                print("1. Disponível para aluguel")
+                print("2. Disponível para venda")
+                print("3. Não disponível")
+                status_choice = input("Escolha o status (1/2/3): ")
+
+                if status_choice == "1":
+                    status = "disponivel_aluguel"
+                elif status_choice == "2":
+                    status = "disponivel_venda"
+                else:
+                    status = "indisponivel"
+
                 garagem = input("Garagem (Sim/Não): ").lower() == "sim"
                 comodos = int(input("Número de Cômodos: "))
                 mobiliado = input("Mobiliado (Sim/Não): ").lower() == "sim"
@@ -41,18 +54,28 @@ class Corretor(Usuario):
             elif choice == "2":
                 print("\n=== Remover Propriedade ===")
                 rua = input("Endereço (Rua) da propriedade a ser removida: ")
-                numero = input("Numeor da propriedade a ser removida: ")
+                numero = input("Numero da propriedade a ser removida: ")
                 catalogo.retirar_imovel(rua,numero)
                 print("Propriedade removida, se existente.")
 
             elif choice == "3":
                 print("\n=== Situação da Propriedade ===")
                 for imovel in catalogo.imoveis:
-                    status = "Disponível" if imovel.status else "Não disponível"
-                    print(f"{imovel.endereco.rua}, Status: {status}")
+                    if imovel.status == "disponivel_aluguel":
+                        status = "Disponível para aluguel"
+                    elif imovel.status == "disponivel_venda":
+                        status = "Disponível para venda"
+                    elif imovel.status == "alugado":
+                        status = "Alugado"
+                    elif imovel.status == "vendido":
+                        status = "Vendido"
+                    else:
+                        status = "Indisponível"
+                    print(f"{imovel.endereco.rua}, Nº{imovel.endereco.numero}, Status: {status}")
+
 
             elif choice == "4":
-                print("Saindo da interface do corretor.")
+                print("Saindo...")
                 break
 
             else:
